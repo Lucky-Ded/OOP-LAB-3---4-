@@ -121,18 +121,18 @@ namespace Lab3
 
             if (objType.SelectedIndex == 0)
             {
-                mapObject = new Car(objTitle.Text, pts[0], Map);
-               car = new Car("Car", pts[0], Map);
+                mapObject = new Car(objTitle.Text, Map.Position, Map);
+               car = new Car("Car", Map.Position, Map);
             }
             else
             if (objType.SelectedIndex == 1)
             {
-                mapObject = new Human(objTitle.Text, pts[0]);
-                human = new Human("Human", pts[0]);
+                mapObject = new Human(objTitle.Text, Map.Position);
+                human = new Human("Human", Map.Position);
             }
             if (objType.SelectedIndex == 2)
             {
-                mapObject = new Location(objTitle.Text, pts[0]);
+                mapObject = new Location(objTitle.Text, Map.Position);
             }
             if (objType.SelectedIndex == 3)
             {
