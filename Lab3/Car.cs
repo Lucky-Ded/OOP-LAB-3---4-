@@ -83,27 +83,25 @@ namespace Lab3
         }
         private void MoveByRoute()
         {
-            
-            
-                foreach (var Point in route.Points)
-                {
+
+            foreach (var Point in route.Points)
+            {
                     Application.Current.Dispatcher.Invoke(delegate
-                    {
-                        if (marker_car != null)
-                        {
-                            this.Point = Point;
-                            marker_car.Position = Point;
-                        }
-                        if (human != null)
-                        {
-                            human.marker_human.Position = Point;
-                            Follow?.Invoke(this, null);
-                        }
-                    });
+             {
+                 if (marker_car != null)
+                 {
+                     this.Point = Point;
+                     marker_car.Position = Point;
+                 }
+                 if (human != null)
+                 {
+                     human.marker_human.Position = Point;
+                     Follow?.Invoke(this, null);
+                 }
 
-                    Thread.Sleep(500);
-                }
-
+             });
+                Thread.Sleep(500);
+            }
                 if (human == null)
                 {
 

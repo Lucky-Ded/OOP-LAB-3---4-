@@ -121,18 +121,18 @@ namespace Lab3
 
             if (objType.SelectedIndex == 0)
             {
-                mapObject = new Car(objTitle.Text, Map.Position, Map);
-               car = new Car("Car", Map.Position, Map);
+                mapObject = new Car(objTitle.Text, pts[0], Map);
+               car = new Car("Car", pts[0], Map);
             }
             else
             if (objType.SelectedIndex == 1)
             {
-                mapObject = new Human(objTitle.Text, Map.Position);
-                human = new Human("Human", Map.Position);
+                mapObject = new Human(objTitle.Text, pts[0]);
+                human = new Human("Human", pts[0]);
             }
             if (objType.SelectedIndex == 2)
             {
-                mapObject = new Location(objTitle.Text, Map.Position);
+                mapObject = new Location(objTitle.Text, pts[0]);
             }
             if (objType.SelectedIndex == 3)
             {
@@ -202,7 +202,7 @@ namespace Lab3
             poisk.Visibility = Visibility.Hidden;
             kuda.Visibility = Visibility.Hidden;
             otkuda.Visibility = Visibility.Hidden;
-            raast_do_obj.Visibility = Visibility.Hidden;
+      
 
         }
 
@@ -229,16 +229,16 @@ namespace Lab3
 
         private void Kuda_Click(object sender, RoutedEventArgs e)
         {
-           if (end != null )
+            if (ObjectList.SelectedItem == null)
+                MessageBox.Show("Выберите конец маршрута!");
+
+            else
+
             {
                 end = Map.Position;
-
+               
             }
-            else
-            {
-                MessageBox.Show("Выберите конец маршрута!");
-              
-            }
+           
         }
 
         private void Otkuda_Click(object sender, RoutedEventArgs e)
@@ -289,14 +289,11 @@ namespace Lab3
             poisk.Visibility = Visibility.Visible;
             kuda.Visibility = Visibility.Visible;
             otkuda.Visibility = Visibility.Visible;
-            raast_do_obj.Visibility = Visibility.Visible;
+           
 
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-
-        {
-        }
+      
     }
 }
