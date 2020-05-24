@@ -98,8 +98,10 @@ namespace Lab3
                      human.marker_human.Position = Point;
                      Follow?.Invoke(this, null);
                  }
-
+                
              });
+
+                
                 Thread.Sleep(500);
             }
                 if (human == null)
