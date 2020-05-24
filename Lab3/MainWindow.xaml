@@ -33,6 +33,6 @@
         <Button x:Name="poisk"  Content="Поиск" HorizontalAlignment="Left" Height="35" Margin="632,361,-281,0" VerticalAlignment="Top" Width="249" Click="Button_Click" Visibility="Hidden" />
         <Button  x:Name="kuda" Content="место назначения" HorizontalAlignment="Left" Margin="632,413,-144,0" VerticalAlignment="Top" Width="112" Click="Kuda_Click" Height="30" Visibility="Hidden" />
         <Button x:Name="otkuda" Content="откуда забрать" HorizontalAlignment="Left" Margin="770,413,-281,0" VerticalAlignment="Top" Width="111" Height="30" Click="Otkuda_Click" Visibility="Hidden" />
-        <Button x:Name="raast_do_obj" Content="расстояние до объекста" HorizontalAlignment="Left" Margin="664,490,-281,0" VerticalAlignment="Top" Width="217" Height="48" Click="Button_Click_1" Visibility="Hidden" />
+        <Button x:Name="raast_do_obj" Content="расстояние до объекста" HorizontalAlignment="Left" Margin="664,490,-281,0" VerticalAlignment="Top" Width="217" Height="48" Click="Button_Click_1" Visibility="Visible" />
     </Grid>
 </Window>

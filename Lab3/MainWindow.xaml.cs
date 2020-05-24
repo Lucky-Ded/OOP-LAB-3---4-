@@ -31,7 +31,7 @@ namespace Lab3
         List<MapObject> Found = new List<MapObject>();
         Human human = null;
          Car car = null;
-        public PointLatLng point { get; set; }
+      //  public PointLatLng point { get; set; }
         public GMapMarker marker { get; private set; }
          PointLatLng start;
          PointLatLng end;
@@ -69,15 +69,41 @@ namespace Lab3
         }
          private void Map_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            PointLatLng point = Map.FromLocalToLatLng((int)e.GetPosition(Map).X, (int)e.GetPosition(Map).Y);
             if (Create.IsChecked == true)
             {
-               PointLatLng point = Map.FromLocalToLatLng((int)e.GetPosition(Map).X, (int)e.GetPosition(Map).Y);
+              
                 pts.Add(point);
                 objType.Visibility = Visibility.Visible;
                 objTitle.Visibility = Visibility.Visible;
                 add1.Visibility = Visibility.Visible;
             }
-            
+
+            if (Search.IsChecked == true)
+            {
+
+                ObjectList.Items.Clear();
+                Found.Clear();
+                if (objTitle.Text == "")
+                {
+                    obj.Sort((obj1, obj2) => obj1.getDistance(point).CompareTo(obj2.getDistance(point)));
+                    foreach (MapObject cm in obj)
+                    {
+                        // Map.Markers.Add(cm.getMarker());
+
+                        ObjectList.Items.Add("Расстояние до " + cm.getTitle() + " - " + cm.getDistance(point).ToString("0.0") + " метров");
+
+                        Found.Add(cm);
+
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show(" очистите поиск ");
+                }
+            }
+
 
         }
         private void AddMarker(MapObject marker)
@@ -96,7 +122,7 @@ namespace Lab3
             if (objType.SelectedIndex == 0)
             {
                 mapObject = new Car(objTitle.Text, Map.Position, Map);
-                car = new Car("Car", Map.Position, Map);
+               car = new Car("Car", Map.Position, Map);
             }
             else
             if (objType.SelectedIndex == 1)
@@ -203,13 +229,15 @@ namespace Lab3
 
         private void Kuda_Click(object sender, RoutedEventArgs e)
         {
-            try
+           if (end != null )
             {
                 end = Map.Position;
+
             }
-            catch
+            else
             {
                 MessageBox.Show("Выберите конец маршрута!");
+              
             }
         }
 
@@ -249,7 +277,7 @@ namespace Lab3
             nearestCar.Arrived += human.CarArrived;
             human.seated += nearestCar.passengerSeated;
             
-
+       
 
         }
 
@@ -269,30 +297,6 @@ namespace Lab3
         private void Button_Click_1(object sender, RoutedEventArgs e)
 
         {
-            if (Search.IsChecked == true)
-            {
-
-                ObjectList.Items.Clear();
-                Found.Clear();
-                if (objTitle.Text == "")
-                {
-                    obj.Sort((obj1, obj2) => obj1.getDistance(point).CompareTo(obj2.getDistance(point)));
-                    foreach (MapObject cm in obj)
-                    {
-                        // Map.Markers.Add(cm.getMarker());
-
-                        ObjectList.Items.Add("Расстояние до " + cm.getTitle() + " - " + cm.getDistance(Map.Position).ToString("0.0") + " метров");
-
-                        Found.Add(cm);
-
-                    }
-
-                }
-                else
-                {
-                    MessageBox.Show(" очистите поиск ");
-                }
-            }
         }
     }
 }

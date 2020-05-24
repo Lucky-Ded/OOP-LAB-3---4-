@@ -36,9 +36,7 @@ namespace Lab3
             // точки в формате System.Device.Location
             GeoCoordinate c1 = new GeoCoordinate(Point.Lat, Point.Lng);
             GeoCoordinate c2 = new GeoCoordinate(this.Point.Lat, this.Point.Lng);
-            // вычисление расстояния между точками в метрах
-           // double distance = c1.GetDistanceTo(c2);
-
+          
             return c1.GetDistanceTo(c2);
         }
 
@@ -85,8 +83,8 @@ namespace Lab3
         }
         private void MoveByRoute()
         {
-            try
-            {
+            
+            
                 foreach (var Point in route.Points)
                 {
                     Application.Current.Dispatcher.Invoke(delegate
@@ -111,30 +109,22 @@ namespace Lab3
 
                     Arrived?.Invoke(this, null);
 
-                }
-                else
-                {
-                    human = null;
-                    Thread.ResetAbort();
-                }
-            }
-            catch
-            {
-
-            }
+               }
+                
+            
         }
 
         public void passengerSeated(object sender, EventArgs args)
         {
 
             human = (Human)sender;
-          
+
             Application.Current.Dispatcher.Invoke(delegate {
                 gmap.Markers.Add(MoveTo(human.destination));
             });
-            //MoveTo(human.destination);
-            human.Point = Point;
           
+            human.Point = Point;
+
         }
     }
 }
